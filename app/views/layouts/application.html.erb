@@ -8,8 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <style>
-      .right{
-        text-align: right;
+      *{
+        box-sizing: border-box;
+      }
+
+      .navbar{
+        background-color: lightblue;
       }
 
       .width{
@@ -63,7 +67,7 @@
     <% if flash[:alert]%>
     <div class="container">
       <div class="row">
-        <div class="alert alert-warning alert-dismissible" role="alert">
+        <div class="alert alert-danger alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <%= alert %>
         </div>
