@@ -1,16 +1,38 @@
-<h1>餐廳後台</h1>
+<div class = "container">
+  <h1>餐廳後台</h1>
 
-<ul>
-<% @restaurants.each do |restaurant| %>
-  <li>
-  <%= restaurant.name %>
-  <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-  <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-  <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"}  %>
-  </li>
-<% end %>
-</ul>
+  <div class="row">
+    <div class="col-xs-12">
 
-<%= paginate @restaurants %>
+  <p class="right">
+      <%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-default" %>
+  </p>
 
-<%= link_to 'New Restaurant', new_admin_restaurant_path %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>餐廳名稱</td>
+        <td>內容</td>
+        <td>編輯</td>
+        <td>刪除</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant.name %></td>
+          <td><%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, admin_restaurant_path(restaurant) %></td>
+          <td><%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_admin_restaurant_path(restaurant) %></td>
+          <td><%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"}  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+    <div class="text-center">
+      <%= paginate @restaurants %>
+    </div>
+
+    </div>
+  </div>
+</div>
