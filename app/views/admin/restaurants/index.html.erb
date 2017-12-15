@@ -13,15 +13,9 @@
         <h3><%= restaurant.name %></h3>
         <p><%= truncate restaurant.description, length:140 %></p>
           <div>
-            <button type="button" class="btn btn-default">
-              <%= link_to "<span class='glyphicon glyphicon-eye-open'></span> 內容".html_safe, admin_restaurant_path(restaurant) %>
-            </button>
-            <button type="button" class="btn btn-default">
-              <%= link_to "<span class='glyphicon glyphicon-edit'></span> 編輯".html_safe, edit_admin_restaurant_path(restaurant) %>
-            </button>
-            <button type="button" class="btn btn-default">
-              <%= link_to "<span class='glyphicon glyphicon-trash'></span> 刪除".html_safe, admin_restaurant_path(restaurant), method: :delete, data: {confirm: "你確定要刪除嗎？"} %>
-            </button>
+              <%= link_to "<span class='glyphicon glyphicon-eye-open'></span> 內容".html_safe, admin_restaurant_path(restaurant), class: "btn btn-default" %>
+              <%= link_to "<span class='glyphicon glyphicon-edit'></span> 編輯".html_safe, edit_admin_restaurant_path(restaurant), class: "btn btn-default" %>
+              <%= link_to "<span class='glyphicon glyphicon-trash'></span> 刪除".html_safe, admin_restaurant_path(restaurant), method: :delete, class: "btn btn-default", data: {confirm: "你確定要刪除嗎？"} %>
           </div>
       </div>
       </div>
