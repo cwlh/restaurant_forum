@@ -1,12 +1,13 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
+  before_action :set_category, only: [:update, :destroy]
 
   def index
     @categories = Category.all
 
     if params[:id]
-      @category = Category.find(params[:id])
+      set_category
     else
       @category = Category.new
     end
@@ -25,19 +26,17 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "更新成功"
       redirect_to admin_categories_path
     else
-
+      flash.now[:alert]="儲存失敗，請重新輸入"
       @categories = Category.all
       render :index
     end
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     flash[:alert]="已刪除!"
     redirect_to admin_categories_path
@@ -47,5 +46,9 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end
