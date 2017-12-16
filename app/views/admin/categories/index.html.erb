@@ -20,6 +20,7 @@
       <tr>
         <th>#</th>
         <th>分類名稱</th>
+        <th>#</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
       <tr>
         <th><%= category.id%></th>
         <td><%= category.name%></td>
+        <td><%= link_to "Edit", admin_categories_path(id: category.id) %></td>
       </tr>
       <% end %>
   </table>
