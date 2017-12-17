@@ -11,10 +11,10 @@
     <% @restaurants.each do |restaurant| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="thumbnail text-center">
-        <%= image_tag restaurant.image, class: "img-thumbnail center-block", width:300, height:200 %>
+        <%= image_tag restaurant.image.thumb, class: "center-block" %>
         <h3><%= restaurant.name %></h3>
         <p><%= restaurant.category_name %></p>
-        <p><%= truncate restaurant.description, length:140 %></p>
+        <p><%= truncate restaurant.description, length:80 %></p>
           <div>
               <%= link_to "<span class='glyphicon glyphicon-eye-open'></span> 內容".html_safe, admin_restaurant_path(restaurant), class: "btn btn-default" %>
               <%= link_to "<span class='glyphicon glyphicon-edit'></span> 編輯".html_safe, edit_admin_restaurant_path(restaurant), class: "btn btn-default" %>
