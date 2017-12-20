@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= @restaurant.name %></h1>
+      <p class="label label-warning"><%= @restaurant.category_name %></p>
+    </div>
+
+    <div class="col-md-4">
+      <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+      <br>
+      <div class="well">
+        <ul class="list-unstyled">
+          <li><strong>Tel:</strong> <%= @restaurant.tel %></li>
+          <li><strong>Address:</strong> <%= @restaurant.address %></li>
+          <li><strong>Opening hours:</strong> <%= @restaurant.opening_hours %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+     <%= simple_format @restaurant.description %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr>
+
+    <p class="pull-right">
+      <%= link_to 'back to index', restaurants_path, class: "btn btn-default" %>
+    </p>
+
+  </div>
+</div>
