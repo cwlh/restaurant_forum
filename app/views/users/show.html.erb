@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+    </div>
+
+    <div class="col-md-6">
+      <h2><%= @user.name %></h2>
+      <p><em><%= @user.email %></em></p>
+      <div><%= simple_format @user.intro %></div>
+      <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary" %>
+    </div>
+
+  </div>
+</div>
