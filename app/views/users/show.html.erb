@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-sm-5">
+      <div class="user-show-img-size">
+        <%= image_tag @user.avatar, width: 400, class:"img-responsive" %>
+      </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-7">
       <h2><%= @user.name %></h2>
       <p><strong><%= @user.email %></strong></p>
       <div><%= simple_format @user.intro %></div>
