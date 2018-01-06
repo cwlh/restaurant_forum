@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-
     <div class="col-sm-5">
       <div class="user-show-img-size">
         <%= image_tag @user.avatar, width: 400, class:"img-responsive" %>
@@ -13,6 +12,27 @@
       <div><%= simple_format @user.intro %></div>
       <%= link_to '編輯', edit_user_path(@user), class:"btn btn-primary" %>
     </div>
+  </div>
 
+  <br>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          已評論餐廳列表
+        </div>
+        <div class="panel-body">
+          <% @commented_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="my-restaurant">
+                <%= image_tag restaurant.image, height: 50, class:"img-rounded" %>
+                <h5 class="text-center"><%= restaurant.name %></h5>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
