@@ -6,9 +6,9 @@
 
     <div class="col-md-6">
       <h2><%= @user.name %></h2>
-      <p><em><%= @user.email %></em></p>
+      <p><strong><%= @user.email %></strong></p>
       <div><%= simple_format @user.intro %></div>
-      <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary" %>
+      <%= link_to '編輯', edit_user_path(@user), class:"btn btn-primary" %>
     </div>
 
   </div>
