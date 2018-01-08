@@ -5,5 +5,5 @@ class Restaurant < ApplicationRecord
   belongs_to :category, optional: true
   delegate :name, to: :category, prefix: true, allow_nil: true
 
-  has_many :comments
+  has_many :comments, dependent: :destroy   #以後刪除 Restaurant 時，就可以一併刪掉關聯的評論
 end
