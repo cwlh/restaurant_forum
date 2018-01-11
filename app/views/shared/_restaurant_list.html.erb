@@ -1,7 +1,7 @@
 <div class="row">
   <% @restaurants.each do |restaurant| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="thumbnail text-center">
+      <div class="thumbnail">
         <% if restaurant.image? %>
           <%= image_tag restaurant.image.thumb %>
         <% else %>
@@ -10,6 +10,7 @@
         <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
         <p class="label label-warning"><%= restaurant.category_name %></p>
         <p><%= truncate restaurant.description, length:80 %></p>
+        <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
       </div>
     </div>
   <% end %>
