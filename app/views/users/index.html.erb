@@ -1,8 +1,36 @@
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= user.name %>
-      <%= render partial:"shared/follow", locals:{user: user} %>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li><%= link_to '首頁', restaurants_path %></li>
+      <li><%= link_to '最新動態', feeds_restaurants_path %></li>
+      <li><%= link_to 'Top10人氣餐廳', ranking_restaurants_path %></li>
+      <li class="active"><%= link_to '美食達人', users_path %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="page-header">
+        <h2>美食達人</h2>
+      </div>
+
+      <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
+          <%= link_to user_path(user) do %>
+            <% if user.avatar == nil %>
+              <span class="glyphicon glyphicon-picture"></span><br>
+            <% else %>
+                <%= image_tag user.avatar, width: 100, height: 120, class:"img-rounded" %><br>
+            <% end %>
+            <%= user.email.split('@').first %><br>
+          <% end %>
+          <%= render partial:"shared/follow", locals:{user: user} %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
