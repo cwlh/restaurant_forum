@@ -1,3 +1,7 @@
+*{
+  letter-spacing: 1px;
+}
+
 .nav{
   margin-bottom: 5px;
 }
@@ -11,7 +15,7 @@
   display: inline-block;
 }
 
-.glyphicon-picture{
+.thumbnail > span{
   width: 300px;
   height: 200px;
 }
@@ -20,7 +24,7 @@
   margin-top: 20px
 }
 
-.my-restaurant{
+.restaurant-in-profile-page{
   display: inline-block;
   padding: 5px;
 }
@@ -37,7 +41,7 @@
   margin-bottom: 15px;
 }
 
-.user-item > glyphicon-picture{
+.user-item > span{
   width: 100;
   height: 120;
 }

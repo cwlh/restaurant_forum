@@ -18,10 +18,14 @@ namespace :dev do
   end
 
   task fake_user: :environment do
+    User.destroy_all
+
     20.times do |i|
       User.create!(
         email: FFaker::Internet.free_email,
-        password: "123456"
+        password: "123456",
+        avatar: File.open(Rails.root.join("seed_avatar/#{rand(0..2)}.jpg")),
+        name: FFaker::NameIT.first_name
       )
     end
     puts "have created fake users"
@@ -43,9 +47,9 @@ namespace :dev do
 
   task fake_all: :environment do
     Rake::Task['db:migrate'].execute
+    Rake::Task['dev:fake_user'].execute
     Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_restaurant'].execute
-    Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_comment'].execute
     #看還有甚麼fake都能放進來
   end

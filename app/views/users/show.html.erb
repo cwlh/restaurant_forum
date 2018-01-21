@@ -5,11 +5,14 @@
         <%= image_tag @user.avatar, width: 400, class:"img-responsive" %>
       </div>
     </div>
-
     <div class="col-sm-7">
       <h2><%= @user.name %></h2>
       <p><strong><%= @user.email %></strong></p>
       <div><%= simple_format @user.intro %></div>
+      <div>
+        你正在追蹤這<%= @followings.size %>個人，<%= @followers.size %>個人正在追蹤你。<br>
+        <%= @commented_restaurants.size %>個已評論餐廳，收藏<%= @favorited_restaurants.size %>個餐廳。
+      </div>
       <%= link_to '編輯', edit_user_path(@user), class:"btn btn-primary" %>
     </div>
   </div>
@@ -17,15 +20,71 @@
   <br>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          已評論餐廳列表
+          你正在追蹤這<%= @followings.size %>個人
+        </div>
+        <div class="panel-body">
+          <% @followings.each do |following| %>
+            <%= link_to user_path(following) do %>
+              <% if following.avatar? %>
+                <%= image_tag following.avatar, height: 50, width: 50, class:"img-circle" %>
+              <% else %>
+                <span class="glyphicon glyphicon-picture"></span>
+              <% end %>
+              <%= following.name %>
+              <hr>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          有<%= @followers.size %>個人正在追蹤你
+        </div>
+        <div class="panel-body">
+          <div class="picture-in-profile-page">
+          <% @followers.each do |follower| %>
+            <%= link_to user_path(follower) do %>
+              <% if follower.avatar? %>
+                <%= image_tag follower.avatar, height: 50, width: 50, class:"img-circle" %>
+              <% else %>
+                <span class="glyphicon glyphicon-picture"></span>
+              <% end %>
+              <%= follower.name %>
+              <hr>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @commented_restaurants.size %>個已評論餐廳
         </div>
         <div class="panel-body">
           <% @commented_restaurants.each do |restaurant| %>
             <%= link_to restaurant_path(restaurant) do %>
-              <div class="my-restaurant">
+              <div class="restaurant-in-profile-page">
+                <%= image_tag restaurant.image, height: 50, class:"img-rounded" %>
+                <h5 class="text-center"><%= restaurant.name %></h5>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          收藏<%= @favorited_restaurants.size %>個餐廳
+        </div>
+        <div class="panel-body">
+          <% @favorited_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="restaurant-in-profile-page">
                 <%= image_tag restaurant.image, height: 50, class:"img-rounded" %>
                 <h5 class="text-center"><%= restaurant.name %></h5>
               </div>
