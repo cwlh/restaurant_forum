@@ -20,12 +20,12 @@
       <% @users.each do |user| %>
         <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
           <%= link_to user_path(user) do %>
-            <% if user.avatar == nil %>
-              <span class="glyphicon glyphicon-picture"></span><br>
+            <% if user.avatar? %>
+              <%= image_tag user.avatar, width: 100, height: 120, class:"img-rounded" %><br>
             <% else %>
-                <%= image_tag user.avatar, width: 100, height: 120, class:"img-rounded" %><br>
+                <span class="glyphicon glyphicon-picture"></span><br>
             <% end %>
-            <%= user.email.split('@').first %><br>
+            <%= user.name %><br>
           <% end %>
           <%= render partial:"shared/follow", locals:{user: user} %>
         </div>

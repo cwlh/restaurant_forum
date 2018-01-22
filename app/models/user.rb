@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_presence_of :name
   mount_uploader :avatar, AvatarUploader
 
   # 「使用者評論很多餐廳」的多對多關聯
